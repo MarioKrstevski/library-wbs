@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div class="relative mr-6 my-2">
+  <div class="flex-grow">
+    <div class="relative m-2">
       <input
         type="search"
-        class="rounded p-3"
+        class="rounded p-3 w-full placeholder-black"
         :placeholder="placeholder"
         :value="text"
         :name="name"
@@ -34,8 +34,13 @@ export default {
     },
     placeholder: {
       type: String,
-      default: "Search "
+      default: "Search"
     }
   }
 };
 </script>
+<style scoped>
+.w-90 {
+  width: 90%;
+}
+</style>

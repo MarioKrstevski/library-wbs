@@ -18,10 +18,13 @@ export default {
       books: []
     };
   },
-  mounted() {
-    api.getBooks().then(res => {
-      this.books = res.data;
-    });
+  async mounted() {
+    try {
+      let data = await api.getBooks();
+      this.books = data;
+    } catch (err) {
+      console.log(err);
+    }
   },
   methods: {
     getFilteredBooks(filters) {

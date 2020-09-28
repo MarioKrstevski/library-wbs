@@ -1,5 +1,5 @@
 <template>
-  <div class="relative inline-flex ">
+  <div class="relative inline-flex my-1 mx-2">
     <svg
       class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"
       xmlns="http://www.w3.org/2000/svg"
@@ -12,13 +12,11 @@
       />
     </svg>
     <select
-      @change="$emit('selected', { value: $event.target.value, name })"
-      class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
+      v-model="selectedValue"
+      class="border border-gray-300 rounded text-gray-60 placeholder-black 0 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
     >
       <option value="0">{{ firstItem }}</option>
-      <option v-for="opt in options" :key="opt" :value="opt.toString()">{{
-        opt
-      }}</option>
+      <option v-for="opt in options" :key="opt" :value="opt">{{ opt }}</option>
     </select>
   </div>
 </template>
@@ -27,10 +25,19 @@ export default {
   name: "Dropdown",
   data() {
     return {
-      selectedValue: ""
+      selectedValue: this.default
     };
   },
-  mounted() {
+  watch: {
+    selectedValue: function(newVal) {
+      console.log(event);
+      this.$emit("selected", {
+        value: newVal !== "0" ? newVal : "",
+        name: this.name
+      });
+    }
+  },
+  created() {
     this.selectedValue = this.default;
   },
   props: {
