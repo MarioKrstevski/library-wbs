@@ -10,6 +10,7 @@
         <h2 class="text-xl text-gray-800 font-medium mr-auto">
           {{ book.name.slice(0, 20) + "..." }}
         </h2>
+        <span>{{ book.bnb }}</span>
         <p
           v-if="this.isOlderThan7Days"
           class="text-black-300 font-semibold tracking-tighter bg-yellow-300 p-1 rounded-md border-black"
@@ -21,7 +22,11 @@
         Description:
       </h2>
       <p class="text-sm mttt text-gray-700 mt-4">
-        {{ book.description.slice(0, 69) + "..." || "Unfamiliar content" }}
+        {{ book.title }}
+      </p>
+      <p class="text-sm mttt text-gray-700 mt-4">isbn: {{ book.isbn }}</p>
+      <p class="text-sm mttt text-gray-700 mt-4">
+        Published: {{ book.datePublished }}
       </p>
       <div class="flex items-center justify-end mt-4 top-auto">
         <span
