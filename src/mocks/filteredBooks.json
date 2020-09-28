@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Filtered 1 ",
+        "author": "Mario REEi",
+        "bnb": 124512,
+        "isbn": "tRdG42F4T5",
+        "datePublished": "09.26.2020",
+        "description": "This page shares a full list of book summaries I have compiled during my reading and research.  ",
+        "stock": 4
+    },
+    {
+        "name": "Mile voli disko",
+        "author": "Bojan Krstevski",
+        "bnb": 412345,
+        "isbn": "tRdGrE42yrRF4T5",
+        "datePublished": "12.09.1995",
+        "description": "fun way to distill the main ideas of the book. If a particular book sounds interesting to you,",
+        "stock": 12
+    }
+]
