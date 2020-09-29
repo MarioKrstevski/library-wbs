@@ -54,14 +54,15 @@
           </div>
         </div>
       </div>
-      <div class="searchButton my-auto">
-        <button
-          class="bg-blue-400 hover:bg-blue-500 text-black font-bold py-2 px-4 rounded"
-          @click="filterBooks"
-        >
-          Search
-        </button>
-      </div>
+      <div class="searchButton my-auto"></div>
+    </div>
+    <div class="button-get mx-auto flex">
+      <button
+        class="bg-blue-400 hover:bg-blue-500 text-black font-bold py-2 px-4 rounded"
+        @click="filterBooks"
+      >
+        Get All Books
+      </button>
     </div>
   </div>
 </template>
@@ -115,5 +116,11 @@ export default {
   width: 90%;
   max-width: 1060px;
   padding: 20px 10px 40px 20px;
+}
+
+.button-get {
+  width: 90%;
+  max-width: 1060px;
+  padding: 0px 0px 10px 25px;
 }
 </style>
