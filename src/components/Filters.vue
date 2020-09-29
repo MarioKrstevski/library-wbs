@@ -115,7 +115,7 @@ export default {
   height: fit-content;
   width: 90%;
   max-width: 1060px;
-  padding: 20px 10px 40px 20px;
+  padding: 20px 10px 10px 20px;
 }
 
 .button-get {
