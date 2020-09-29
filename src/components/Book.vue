@@ -1,52 +1,39 @@
 <template>
   <!-- book card -->
-  <div
-    class="book flex-initial md:flex shadow-lg  mx-6 md:mx-auto my-4 max-w-lg md:max-w-2xl h-56"
-  >
+  <div class="book shadow-lg h-40 rounded p-2 bg-transparent relative">
     <div
-      class="w-full flex flex-col justify-between  px-4 py-4 bg-teal-200 rounded-lg"
+      class="text-black text-lg font-medium hover:underline hover:text-gray-300 book-title"
     >
-      <div class="flex items-center">
-        <h2 class="text-xl text-gray-800 font-medium mr-auto">
-          {{ book.name.slice(0, 20) + "..." }}
-        </h2>
-        <span>{{ book.bnb }}</span>
-        <p
-          v-if="this.isOlderThan7Days"
-          class="text-black-300 font-semibold tracking-tighter bg-yellow-300 p-1 rounded-md border-black"
-        >
-          NEW
-        </p>
-      </div>
-      <h2 class="text-base text-gray-900 font-medium mt-2">
-        Description:
-      </h2>
-      <p class="text-sm mttt text-gray-700 mt-4">
-        {{ book.title }}
-      </p>
-      <p class="text-sm mttt text-gray-700 mt-4">isbn: {{ book.isbn }}</p>
-      <p class="text-sm mttt text-gray-700 mt-4">
-        Published: {{ book.datePublished }}
-      </p>
-      <div class="flex items-center justify-end mt-4 top-auto">
-        <span
-          v-if="book.stock"
-          class="bg-white text-black-800 px-4 py-2 rounded mr-auto"
-        >
-          Available: {{ book.stock }}
-        </span>
-        <span v-else class="bg-white text-red-600 px-4 py-2 rounded mr-auto">
-          No free copies
-        </span>
-        <button
-          :disabled="!book.stock"
-          class=" bg-blue-600 text-gray-200 px-6 py-2 rounded-md "
-          :class="{ 'opacity-50 ': !book.stock, 'cursor-default': !book.stock }"
-        >
-          Rent
-        </button>
-      </div>
+      {{
+        book.title.length > 75 ? book.title.slice(0, 75) + "..." : book.title
+      }}
     </div>
+    <div class="text-gray-200 text-xs inline-block mr-4">
+      <span class="text-teal-300">isbn:</span>
+      {{ book.isbn }}
+    </div>
+    <div class="text-gray-200 text-xs inline-block mr-6">
+      <span class="text-teal-300">bnb:</span> {{ book.bnb }}
+    </div>
+
+    <div class="text-blue-200 font-medium text-sm inline-block">
+      {{ book.datePublished }}
+    </div>
+    <div class="text-gray-200">
+      <span class="text-teal-300 text-sm">Authors: </span>
+      {{ book.creators.join(", ") }}
+    </div>
+
+    <div class="text-gray-200">
+      <span class="text-teal-300 text-sm">Contributors: </span>
+      {{ book.contributors.join(", ") }}
+    </div>
+    <button
+      class="absolute bottom-0 right-0 rent-button rounded px-4 py-2 bg-white text-red-800 text-sm font-medium uppercase hover:text-red-400 hover:bg-gray-900 focus:outline-none"
+    >
+      Rent book
+    </button>
+    <!-- <div>{{ book.name  }}</div> -->
   </div>
 </template>
 
@@ -74,20 +61,21 @@ export default {
 </script>
 <style lang="scss" scoped>
 .book {
-  flex-basis: 32%;
+  width: 32%;
+  padding-bottom: 18%;
+  margin-bottom: 2%;
+  border: 3px solid white;
+  // background-color: #96adcfa6;
 }
-.mttt {
-  margin-bottom: auto;
+.book:hover {
+  background-color: #474d57;
 }
-.book::after {
-  content: "";
-  flex: auto;
+.book-title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  letter-spacing: 0.8px;
 }
-.bookDemo {
-  display: inline-block;
-  height: 80px;
-  width: 200px;
-  border: 1px solid rgb(240, 0, 228);
-  margin: 6px;
+.rent-button {
+  right: 8px;
+  bottom: 8px;
 }
 </style>

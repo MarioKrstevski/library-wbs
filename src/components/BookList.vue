@@ -3,8 +3,11 @@
     <div v-if="!list.length">
       No matches exist
     </div>
-    <div v-else class="booklistDemo mx-auto flex flex-wrap  justify-between">
-      <div v-if="isBooks(list[0])">
+    <div v-else>
+      <div
+        v-if="isBooks(list[0])"
+        class="flex flex-wrap justify-between px-8 py-2 bg-gray-700"
+      >
         <Book v-for="book in list" :key="book.isbn" :book="book" />
       </div>
       <div v-else-if="isContributors(list[0])">
