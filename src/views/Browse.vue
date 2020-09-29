@@ -31,7 +31,6 @@ export default {
   },
   watch: {
     globalBooks(newBooks) {
-      console.log("newbooks", newBooks);
       this.books = newBooks;
     }
   },

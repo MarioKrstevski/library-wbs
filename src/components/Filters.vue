@@ -109,10 +109,8 @@ export default {
       this.$store.dispatch(commitName, this.$data);
     },
     markSelected(changes) {
-      console.log("val", changes);
       const { value, name } = changes;
       this[name] = value;
-      console.log("vales", this.$data);
     },
     filterBooks() {
       this.$emit("getBooksFiltered", this.$data );

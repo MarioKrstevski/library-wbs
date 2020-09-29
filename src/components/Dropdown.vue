@@ -30,7 +30,6 @@ export default {
   },
   watch: {
     selectedValue: function(newVal) {
-      console.log(event);
       this.$emit("selected", {
         value: newVal !== "0" ? newVal : "",
         name: this.name

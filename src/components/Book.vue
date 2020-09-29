@@ -1,8 +1,6 @@
 <template>
   <!-- book card -->
-  <div
-    class="book shadow-lg h-40 rounded p-2 bg-transparent relative overflow-hidden "
-  >
+  <div class="relative book shadow-lg pb-66px rounded p-2 bg-transparent  ">
     <div
       class="text-black text-lg font-medium hover:underline hover:text-gray-300 book-title"
     >
@@ -30,11 +28,14 @@
       <span class="text-teal-300 text-sm">Contributors: </span>
       {{ book.contributors.join(", ") }}
     </div>
-    <button
-      class="absolute bottom-0 right-0 rent-button rounded px-4 py-2 bg-white text-red-800 text-sm font-medium uppercase hover:text-red-400 hover:bg-gray-900 focus:outline-none"
-    >
-      Rent book
-    </button>
+
+    <div>
+      <button
+        class="absolute ml-auto bottom-0 right-0 rent-button rounded px-4 py-2 bg-white text-red-800 text-sm font-medium uppercase hover:text-red-400 hover:bg-gray-900 focus:outline-none"
+      >
+        Rent book
+      </button>
+    </div>
     <!-- <div>{{ book.name  }}</div> -->
   </div>
 </template>
@@ -68,6 +69,9 @@ export default {
   margin-bottom: 2%;
   border: 3px solid white;
   // background-color: #96adcfa6;
+}
+.pb-66px {
+  padding-bottom: 66px;
 }
 .book:hover {
   background-color: #474d57;

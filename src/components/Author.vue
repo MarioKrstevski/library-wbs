@@ -17,7 +17,6 @@ export default {
   methods: {
     bookPrintName(book) {
       if (book.includes("/")) {
-        console.log("book", book);
         const indexofdash = book.indexOf("/");
         return book.slice(0, indexofdash);
       }

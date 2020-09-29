@@ -15,7 +15,6 @@ export const booksModule = {
     },
     async searchByBookAuthor({ commit }, filters) {
       let data = await api.getFilteredBooksByAuthor(filters);
-      console.log("ba", data, filters);
       if (data !== "noparam") {
         //store authors
         commit("storeBooks", data);
@@ -23,7 +22,6 @@ export const booksModule = {
     },
     async searchByBookName({ commit }, filters) {
       let data = await api.getFilteredBooksByName(filters);
-      console.log("bn", data, filters);
 
       if (data !== "noparam") {
         // store books
@@ -32,7 +30,6 @@ export const booksModule = {
     },
     async getFilteredBooks({ commit }, filters) {
       let data = await api.getFilteredBooksByFilters(filters);
-      console.log("bc", data, filters);
 
       if (data !== "noparam") {
         commit("storeBooks", data);
@@ -40,7 +37,6 @@ export const booksModule = {
     },
     async searchByBookContributor({ commit }, filters) {
       let data = await api.getFilteredBooksByContributor(filters);
-      console.log("bc", data, filters);
 
       if (data !== "noparam") {
         // store contributors
