@@ -27,13 +27,6 @@
         </div>
         <div>
           <Dropdown
-            name="genre"
-            :options="['mistery', 'horor', 'romance']"
-            firstItem="Select Genre"
-            @selected="markSelected"
-            default="mistery"
-          />
-          <Dropdown
             name="year"
             :options="[
               '2020',
@@ -49,13 +42,6 @@
               '1980-1990'
             ]"
             firstItem="Select Year"
-            @selected="markSelected"
-          />
-          <Dropdown
-            name="language"
-            :options="['Macedonian', 'Russian', 'English']"
-            firstItem="Select Language"
-            default="Russian"
             @selected="markSelected"
           />
           <Dropdown
@@ -98,8 +84,6 @@ export default {
       name: "",
       author: "",
       contributor: "",
-      language: "",
-      year: "",
       orderby: "",
       availableOnly: false
     };
