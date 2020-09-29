@@ -6,7 +6,7 @@ function concatParams(filterObject) {
   return "paramsSTring";
 }
 export default {
-  getBooks: function() {
+  getBooks: function () {
     return axios
       .get(API_URL + "books", {
         headers: { "Content-Type": "application/x-www-form-urlencoded" }
@@ -43,8 +43,12 @@ export default {
     if (!filters.author) {
       return "noparam";
     }
+    let url = API_URL + "authors/" + filters.author
+    if (filters.author === 'all') {
+      url = API_URL + 'authors'
+    }
     return axios
-      .get(API_URL + "authors/" + filters.author, {
+      .get(url, {
         headers: { "Content-Type": "application/x-www-form-urlencoded" }
       })
       .then(res => {
@@ -67,8 +71,12 @@ export default {
     if (!filters.contributor) {
       return "noparam";
     }
+    let url = API_URL + "contributors/" + filters.contributor
+    if (filters.contributor === 'all') {
+      url = API_URL + 'contributors'
+    }
     return axios
-      .get(API_URL + "contributors/" + filters.contributor, {
+      .get(url, {
         headers: { "Content-Type": "application/x-www-form-urlencoded" }
       })
       .then(res => {
