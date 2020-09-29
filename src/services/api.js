@@ -19,7 +19,7 @@ export default {
       return "noparam";
     }
     return axios
-      .get(API_URL + "books/" + filters.name, {
+      .get(API_URL + "searchByName?searchParametar=" + filters.name, {
         headers: { "Content-Type": "application/x-www-form-urlencoded" }
       })
       .then(res => {
@@ -42,7 +42,7 @@ export default {
     if (!filters.author) {
       return "noparam";
     }
-    let url = API_URL + "authors/" + filters.author
+    let url = API_URL + "searchByAuthorName?authorName=" + filters.author;
     if (filters.author === 'all') {
       url = API_URL + 'authors'
     }
@@ -70,9 +70,65 @@ export default {
     if (!filters.contributor) {
       return "noparam";
     }
-    let url = API_URL + "contributors/" + filters.contributor
+    let url = API_URL + "searchByContributorName?conName=" + filters.contributor
     if (filters.contributor === 'all') {
       url = API_URL + 'contributors'
+    }
+    return axios
+      .get(url, {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" }
+      })
+      .then(res => {
+        const isArray = Array.isArray(res.data);
+        if (isArray) {
+          return res.data;
+        }
+        if (res.data && res.data.type === "Person") {
+          const array = [];
+          array[0] = res.data;
+          return array;
+        }
+        return [];
+      })
+      .catch(() => {
+        return [];
+      });
+  },
+  getFilteredBooksByYear(filters) {
+    if (!filters.year) {
+      return "noparam";
+    }
+    let url = API_URL + "searchBookByYear?year=" + filters.year;
+    if (filters.year === "all" && !filters.year) {
+      url = API_URL + "books";
+    }
+    return axios
+      .get(url, {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" }
+      })
+      .then(res => {
+        const isArray = Array.isArray(res.data);
+        if (isArray) {
+          return res.data;
+        }
+        if (res.data && res.data.type === "Person") {
+          const array = [];
+          array[0] = res.data;
+          return array;
+        }
+        return [];
+      })
+      .catch(() => {
+        return [];
+      });
+  },
+  getFilteredBooksByOrder(filters) {
+    if (!filters.orderby) {
+      return "noparam";
+    }
+    let url = API_URL + "OrderByLatestBooks";
+    if (filters.orderby === 'oldest') {
+      url = API_URL + 'OrderByOldestBooks'
     }
     return axios
       .get(url, {

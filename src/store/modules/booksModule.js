@@ -42,6 +42,22 @@ export const booksModule = {
         // store contributors
         commit("storeBooks", data);
       }
+    },
+    async searchByBookYear({ commit }, filters) {
+      let data = await api.getFilteredBooksByYear(filters);
+
+      if (data !== "noparam") {
+        // store contributors
+        commit("storeBooks", data);
+      }
+    },
+    async searchByBookOrder({ commit }, filters) {
+      let data = await api.getFilteredBooksByOrder(filters);
+
+      if (data !== "noparam") {
+        // store contributors
+        commit("storeBooks", data);
+      }
     }
   },
   getters: {

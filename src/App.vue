@@ -16,6 +16,9 @@ export default {
   components: {
     Nav,
     Secret
+  },
+  mounted() {
+    this.$store.dispatch("getFilteredBooks", {});
   }
 };
 </script>

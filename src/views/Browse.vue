@@ -16,18 +16,10 @@ export default {
       list: []
     };
   },
-  mounted() {
-    this.$store.dispatch("getFilteredBooks", {});
-  },
   computed: {
     globalBooks() {
       return this.$store.getters.getBooks;
     }
-  },
-  created() {
- 
-  },
-  beforeDestroy() {
   },
   watch: {
     globalBooks(newBooks) {

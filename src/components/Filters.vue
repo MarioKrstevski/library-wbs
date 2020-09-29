@@ -28,28 +28,20 @@
         <div>
           <Dropdown
             name="year"
-            :options="[
-              '2020',
-              '2019',
-              '2018',
-              '2017',
-              '2016',
-              '2015',
-              '2010-2014',
-              '2005-2010',
-              '2000-2005',
-              '1990-2000',
-              '1980-1990'
-            ]"
+            :options="yearRange"
             firstItem="Select Year"
             @selected="markSelected"
+            @do-commit="doCommit"
+            action="searchByBookYear"
           />
           <Dropdown
             name="orderby"
-            :options="['latest', 'featured', 'oldest']"
+            :options="['latest', 'oldest']"
             firstItem="Order by"
             default="oldest"
             @selected="markSelected"
+            @do-commit="doCommit"
+            action="searchByBookOrder"
           />
           <div class="mx-2 my-1 inline-block">
             <label class="inline-flex items-center mt-3">
@@ -83,6 +75,7 @@ export default {
     return {
       name: "",
       author: "",
+      year: "",
       contributor: "",
       orderby: "",
       availableOnly: false
@@ -97,7 +90,16 @@ export default {
       this[name] = value;
     },
     filterBooks() {
-      this.$emit("getBooksFiltered", this.$data );
+      this.$emit("getBooksFiltered", this.$data);
+    }
+  },
+  computed: {
+    yearRange() {
+      let range = ["all"];
+      for (let i = 1950; i < 2020; i++) {
+        range.push(i.toString());
+      }
+      return range;
     }
   },
   components: {

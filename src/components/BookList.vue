@@ -8,7 +8,11 @@
         v-if="isBooks(list[0])"
         class="flex flex-wrap justify-between px-8 py-2 bg-gray-700"
       >
-        <Book v-for="book in list" :key="book.isbn" :book="book" />
+        <Book
+          v-for="(book, indx) in list"
+          :key="book.isbn + indx"
+          :book="book"
+        />
       </div>
       <div
         v-else-if="isContributors(list[0])"
