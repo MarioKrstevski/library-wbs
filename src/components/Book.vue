@@ -1,6 +1,8 @@
 <template>
   <!-- book card -->
-  <div class="book shadow-lg h-40 rounded p-2 bg-transparent relative">
+  <div
+    class="book shadow-lg h-40 rounded p-2 bg-transparent relative overflow-hidden "
+  >
     <div
       class="text-black text-lg font-medium hover:underline hover:text-gray-300 book-title"
     >

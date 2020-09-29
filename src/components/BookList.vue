@@ -10,14 +10,20 @@
       >
         <Book v-for="book in list" :key="book.isbn" :book="book" />
       </div>
-      <div v-else-if="isContributors(list[0])">
+      <div
+        v-else-if="isContributors(list[0])"
+        class="flex flex-wrap justify-between px-8 py-2 bg-red-800"
+      >
         <Contributor
           v-for="contributor in list"
           :key="contributor.name"
           :contributor="contributor"
         />
       </div>
-      <div v-else-if="isAuthors(list[0])">
+      <div
+        v-else-if="isAuthors(list[0])"
+        class="flex flex-wrap justify-between px-8 py-2 bg-blue-800"
+      >
         <Author v-for="author in list" :key="author.name" :author="author" />
       </div>
     </div>

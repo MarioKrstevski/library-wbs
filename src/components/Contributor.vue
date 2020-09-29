@@ -1,11 +1,13 @@
 <template>
   <!-- book card -->
-  <div
-    class="book flex-initial flex-col md:flex shadow-lg  mx-6 md:mx-auto my-4 max-w-lg md:max-w-2xl h-56"
-  >
-    <p>{{ contributor.name }}</p>
-    <p>{{ contributor.type }}</p>
-    <p>{{ contributor.hasContributed }}</p>
+  <div class="contributor shadow-lg h-24 rounded p-2">
+    <div class="text-2xl text-white">{{ contributor.name }}</div>
+    <div class="text-base text-black font-medium">Contributions:</div>
+    <ol class="list-decimal text-red-200 ml-8">
+      <li v-for="book in contributor.hasContributed" :key="book">
+        {{ book }}
+      </li>
+    </ol>
   </div>
 </template>
 
@@ -24,4 +26,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.contributor {
+  width: 48%;
+  padding-bottom: 18%;
+  margin-bottom: 2%;
+  border: 3px solid pink;
+  border-top: 8px solid pink;
+}
 </style>
