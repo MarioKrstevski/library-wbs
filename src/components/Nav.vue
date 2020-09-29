@@ -26,8 +26,13 @@
           type="search"
           name="search"
           placeholder="Quick search"
+          @input="updateGlobalFilter"
         />
-        <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
+        <button
+          type="submit"
+          @click="filterGlobally"
+          class="absolute right-0 top-0 mt-5 mr-4"
+        >
           <svg
             class="text-gray-600 h-4 w-4 fill-current"
             xmlns="http://www.w3.org/2000/svg"
@@ -64,6 +69,13 @@ export default {
   methods: {
     rclickHandler() {
       this.$modal.show("secretcode");
+    },
+    async filterGlobally() {
+      let search = this.$store.getters.getGlobalSearch;
+      this.$store.dispatch("searchByBookName", { name: search });
+    },
+    updateGlobalFilter(event) {
+      this.$store.dispatch("setGlobalSearch", event.target.value);
     }
   }
 };

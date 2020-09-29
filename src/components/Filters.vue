@@ -5,13 +5,24 @@
         <div class="flexd">
           <SearchInput
             @selected="markSelected"
+            @do-commit="doCommit"
             name="name"
             placeholder="Search by name"
+            action="searchByBookName"
           />
           <SearchInput
             @selected="markSelected"
+            @do-commit="doCommit"
             name="author"
             placeholder="Search by author"
+            action="searchByBookAuthor"
+          />
+          <SearchInput
+            @selected="markSelected"
+            @do-commit="doCommit"
+            name="contributor"
+            placeholder="Search by contributor"
+            action="searchByBookContributor"
           />
         </div>
         <div>
@@ -85,8 +96,8 @@ export default {
   data() {
     return {
       name: "",
-      genre: "",
       author: "",
+      contributor: "",
       language: "",
       year: "",
       orderby: "",
@@ -94,6 +105,9 @@ export default {
     };
   },
   methods: {
+    doCommit(commitName) {
+      this.$store.dispatch(commitName, this.$data);
+    },
     markSelected(changes) {
       console.log("val", changes);
       const { value, name } = changes;
@@ -101,7 +115,7 @@ export default {
       console.log("vales", this.$data);
     },
     filterBooks() {
-      this.$emit("getBooksFiltered", { filters: this.$data });
+      this.$emit("getBooksFiltered", this.$data );
     }
   },
   components: {

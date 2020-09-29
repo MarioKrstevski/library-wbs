@@ -52,12 +52,7 @@
 
 <script>
 export default {
-  name: "BookList",
-  data() {
-    return {
-      books: [{ name: "Cinderella" }]
-    };
-  },
+  name: "Book",
   computed: {
     isOlderThan7Days() {
       const date = this.book.datePublished;
